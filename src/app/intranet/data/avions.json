@@ -1,0 +1,14 @@
+[
+    {
+        "modele":"A-320",
+        "capacite":"150",
+        "autonomie":"5400",
+        "code":"A-320-22-11-18"
+    },
+    {
+        "modele":"Boeing 747",
+        "capacite":"250",
+        "autonomie":"8400",
+        "code":"b-747-22-11-18"
+    }
+]

@@ -1,0 +1,12 @@
+aside {
+    width:90vw;
+}
+
+aside > nav {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+aside > nav > *{
+    margin: 10px;
+}

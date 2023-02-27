@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "prendtonvolqg": {
+      "hosting": {
+        "angular": [
+          "prendtonvolqg"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "prendtonvolqg"
+  }
+}

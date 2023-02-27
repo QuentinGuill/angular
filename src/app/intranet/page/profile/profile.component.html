@@ -1,0 +1,17 @@
+<h1>Mise à jour de votre profile</h1>
+<section>
+    <h2>Utilisateur</h2>
+    <form (submit)="updateProfile()">
+        <input name="Prenom" [(ngModel)]="profile.prenom" placeholder="Saisissez votre prenom">
+        <input name="Nom" [(ngModel)]="profile.nom" placeholder="Saisisser votre nom">
+        <input name="Téléphone" [(ngModel)]="profile.telephone" placeholder="Saisisser votre numéro de téléphone">
+        <input name="Photo" [(ngModel)]="profile.photo" placeholder="Saisisser un lien vers une photo">
+        <select name="Attribut" [(ngModel)]="profile.statut">
+            <option value="pate">Paté</option>
+            <option value="saussisson">Saussisson</option>
+            <option value="baguette">Baguette</option>
+        </select>
+        <input type="submit" value="Changer Valeur">
+        <input type="reset" value="Annuler">
+    </form>
+$</section>

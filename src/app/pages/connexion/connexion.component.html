@@ -1,0 +1,10 @@
+<section>
+    <h2>Se connecter</h2>
+    <form (submit)="checkFromFire()">
+        <input name="id" [(ngModel)]="id.id" (input)="logId()" required placeholder="Saisissez votre identifiant">
+        <label>Mot de passe</label>
+        <input name="pass" [(ngModel)]="id.pass" (input)="logPass()" required placeholder="Saisisser votre mot de passe">
+        <input type="submit" value="Connexion" (click)="checkFromFire()">
+        <input type="reset" value="Annuler">
+    </form>
+$</section>

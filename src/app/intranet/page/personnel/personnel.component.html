@@ -1,0 +1,25 @@
+<aside>
+    <h2>Liste du personnel</h2>
+    <table>
+        <thead>
+            <tr>
+                <td>Nom</td>
+                <td>Prenoms</td>
+                <td>Habilitation</td>
+            </tr>
+        </thead>
+        <tr *ngFor= "let v of personnels">
+            <td> {{ v.nom }} </td>
+            <td> {{ v.prenom }} </td>
+            <td> {{ v.habilitation }} </td>
+        </tr>
+    </table>
+</aside>
+<section>
+    <h3>Liste des avions disponibles</h3>
+    <form (submit)="updatePersonnel()" #f="ngForm">
+        <input name="nom" [(ngModel)]="personnelf.nom">
+        <input name="prenom" [(ngModel)]="personnelf.prenom">
+        <input name="habilitation" [(ngModel)]="personnelf.habilitation">
+    </form>
+</section>

@@ -1,0 +1,22 @@
+<aside>
+    <h2>Liste des aeroports</h2>
+    <table>
+        <thead>
+            <tr>
+                <td>Nom</td>
+                <td>Nombre de piste</td>
+            </tr>
+        </thead>
+        <tr *ngFor= "let v of aeroports">
+            <td> {{ v.nom }} </td>
+            <td> {{ v.nbPiste }} </td>
+        </tr>
+    </table>
+</aside>
+<section>
+    <h3>Liste des aeroports disponibles</h3>
+    <form (submit)="updateAeroport()" #f="ngForm">
+        <input name="nom" [(ngModel)]="aeroportf.nom">
+        <input name="nbPiste" [(ngModel)]="aeroportf.nbPiste">
+    </form>
+</section>

@@ -1,0 +1,28 @@
+<aside>
+    <h2>Liste des avions</h2>
+    <table>
+        <thead>
+            <tr>
+                <td>Code</td>
+                <td>Modèle d'avion</td>
+                <td>Autonomie de l'avion</td>
+                <td>Capacite de l'avion</td>
+            </tr>
+        </thead>
+        <tr *ngFor= "let v of avions">
+            <td> {{ v.code }} </td>
+            <td> {{ v.modele }} </td>
+            <td> {{ v.autonomie }} </td>
+            <td> {{ v.capacite }} </td>
+        </tr>
+    </table>
+</aside>
+<section>
+    <h3>Liste des avions disponibles</h3>
+    <form (submit)="updateAvion()" #f="ngForm">
+        <input name="code" [(ngModel)]="avionf.code">
+        <input name="modele" [(ngModel)]="avionf.modele">
+        <input name="capacite" [(ngModel)]="avionf.capacite">
+        <input name="autonomie" [(ngModel)]="avionf.autonomie">
+    </form>
+</section>
