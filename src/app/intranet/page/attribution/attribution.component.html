@@ -1,7 +1,7 @@
 <section>
     <h3>Liste des vols dont le personnel doit être attribué</h3>
     <article>
-        <input [(ngModel)]="filtreModele" name="filtre">
+        <input [(ngModel)]="filtreModele" (change)="filter()" name="filtre">
         <table>
             <thead>
                 <tr>
@@ -15,19 +15,55 @@
                 </tr>
             </thead>
             <!-- tr *ngFor= "let v of company" | avions:filtreModele-->
-            <tr *ngFor= "let v of company">
+            <tr *ngFor= "let v of companyFiltered">
                 <td> {{ v.code }} </td>
-                <td> {{ v.avion.modele }} </td>
+                <td> {{ v.avion }} </td>
                 <td> {{ v.date }} </td>
                 <td> {{ v.duree }} </td>
                 <td> {{ v.aeroportDepart }} </td>
                 <td> {{ v.aeroportArrivee }} </td>
                 <td> 
                     <ul>
-                        <li *ngFor=" let p of v.personnel">{{p.nom | uppercase}}, {{p.prenom}}</li>
+                        <li *ngFor=" let p of v.personnel">{{p | uppercase}}</li>
                     </ul>
                 </td>
+                <td><button (click)="selectCompany(v.code)">Modifier</button></td>
             </tr>
         </table>
     </article>
+</section>
+<section>
+    <div class="alligned-h3">
+        <h3 [ngClass]="isEditing ? 'd-none' : ''">Ajouter un</h3><h3 [ngClass]="isEditing ? '' : 'd-none'">Modifier le</h3><h3> Vol</h3>
+    </div>
+    <form #f="ngForm" (submit)="updateCompany()">
+        <input name="code" [disabled]="isEditing" [(ngModel)]="companyf.code">
+        <input name="date" [(ngModel)]="companyf.date">
+        <select name="avion" [(ngModel)]="companyf.avion">
+            <option></option>
+            <option *ngFor= "let a of avions">{{a.code}}</option>
+        </select>
+        <input name="duree" [(ngModel)]="companyf.duree">
+        <select name="aeroportDepart" [(ngModel)]="companyf.aeroportDepart">
+            <option></option>
+            <option *ngFor= "let a of aeroports">{{a.nom}}</option>
+        </select>
+        <select name="aeroportArrivee" [(ngModel)]="companyf.aeroportArrivee">
+            <option></option>
+            <option *ngFor= "let a of aeroports">{{a.nom}}</option>
+        </select>
+        <section class="form-box">
+            <div *ngFor="let pers of companyf.personnel; let i = index">
+                <select [(ngModel)]="companyf.personnel[i]" name="personnel">
+                    <option></option>
+                    <option *ngFor="let p of personnels">{{p.code}}</option>
+                </select>
+                <p>{{companyf.personnel[i]}}</p>
+            </div>
+            <button (click)="addPersonnel()">Ajouter du personnel</button>
+        </section>
+
+        <button type="submit">Modifier</button>
+        <button (click)="resetCompany()">Reset</button>
+    </form>
 </section>

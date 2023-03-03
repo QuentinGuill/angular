@@ -12,23 +12,27 @@ export class AvionsComponent implements OnInit {
   filtreModele:string = '';
   avions: Avion[];
   avionf: Avion;
+  isEditing: boolean;
 
   constructor(public avion_service:AvionService) {
     this.avions = [];
-    this.avionf = {"code":"", "modele":"", "autonomie":"", "capacite":""}
+    this.avionf = <Avion>{};
+    this.isEditing = false;
   }
 
   selectAvion(code:string|number) {
     this.avionf = this.avions.find(v => v.code == code)!;
+    this.isEditing= true;
   }
 
   updateAvion() {
-    //this.avion_service.updateFireAvion(this.avionf.code)
+    this.avion_service.updateFireAvion(this.avionf.code, this.avionf)
     console.log("L'avion va etre mis a jour");
   }
 
   resetAvion(){
     this.avionf = <Avion>{};
+    this.isEditing = false;
   }
 
   ngOnInit(): void {

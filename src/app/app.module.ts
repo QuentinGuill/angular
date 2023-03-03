@@ -19,7 +19,7 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { provideStorage,getStorage } from '@angular/fire/storage';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdminpageComponent } from './adminpage/adminpage.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +28,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FooterComponent,
     ConnexionComponent,
     MenuComponent,
+    AdminpageComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,8 +41,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
     provideMessaging(() => getMessaging()),
-    provideStorage(() => getStorage()),
-    NgbModule.forRoot()
+    provideStorage(() => getStorage())
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor, multi:true}, {provide: HTTP_INTERCEPTORS, useClass:Erreur401Interceptor, multi:true}],
   bootstrap: [AppComponent]

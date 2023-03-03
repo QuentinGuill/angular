@@ -1,34 +1,49 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Compagnie, vols } from '../modeles/compagnie';
-import { Personnel } from '../modeles/personnel';
-import { Firestore, getDocs, collection } from '@angular/fire/firestore';
+import { Compagnie } from '../modeles/compagnie';
+import { collection, deleteDoc, doc, getDoc, getDocs, setDoc, DocumentReference } from 'firebase/firestore';
+import { Firestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyService {
-  company: Compagnie[];
-  personnels!:Array<{id:string, data:Personnel}>;
+  companys: Array<Compagnie> = [];
+  listCompagnie!:Array<{id:string, data:Compagnie}>;
 
-  constructor(private http: HttpClient,private bdd:Firestore) {
-    this.company = vols;
+  constructor(private http: HttpClient, private readonly bdd:Firestore) {
   }
 
-  async getPersonnels() {
-    this.personnels = [];
-    await getDocs(collection(this.bdd, 'personels'))
-      .then(pers =>
-        pers.forEach(p => {
-          this.personnels.push({id:p.id, data:p.data() as Personnel})
-        }));
+  async getFireCmp() {
+    this.companys = [];
+    await getDocs(collection(this.bdd, 'vols'))
+    .then(ps => {
+      console.log(ps);
+      ps.forEach( p => {
+        console.log(p.data());
+        this.companys.push(p.data() as Compagnie);
+      })
+
+      console.log(this.companys);
+    });
   }
 
-  async getFireVols() {
+  async getFireCompagnie(nom:string) {
+    const docCompagnie = doc(this.bdd, 'vols', nom);
+    await getDoc(docCompagnie);
+  }
 
+  async delFireCompagnie(nom:string) {
+    const docCompagnies = doc(this.bdd, 'vols', nom);
+    await deleteDoc(docCompagnies);
+  }
+
+  async updateFireCompagnie(nom:string, data:Compagnie) {
+    const docCompagnie = doc(this.bdd, 'vols', nom);
+    await setDoc(docCompagnie, data, {merge:true});
   }
 
   getCompany() {
-    return this.company;
+    return this.companys;
   }
 }

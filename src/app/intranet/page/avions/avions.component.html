@@ -14,15 +14,21 @@
             <td> {{ v.modele }} </td>
             <td> {{ v.autonomie }} </td>
             <td> {{ v.capacite }} </td>
+            <td><button (click)="selectAvion(v.code)">Modifier</button></td>
         </tr>
     </table>
 </aside>
 <section>
-    <h3>Liste des avions disponibles</h3>
+    <div class="alligned-h3">
+        <h3 [ngClass]="isEditing ? 'd-none' : ''">Ajouter un</h3><h3 [ngClass]="isEditing ? '' : 'd-none'">Modifier l'</h3><h3> Avion</h3>
+    </div>
     <form (submit)="updateAvion()" #f="ngForm">
-        <input name="code" [(ngModel)]="avionf.code">
+        <input name="code" [disabled]="isEditing" [(ngModel)]="avionf.code">
         <input name="modele" [(ngModel)]="avionf.modele">
         <input name="capacite" [(ngModel)]="avionf.capacite">
         <input name="autonomie" [(ngModel)]="avionf.autonomie">
+
+        <button type="submit">Modifier</button>
+        <button (click)="resetAvion()">Reset</button>
     </form>
 </section>

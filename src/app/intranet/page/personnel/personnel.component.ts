@@ -13,23 +13,27 @@ export class PersonnelComponent implements OnInit {
   filtreModele:string = '';
   personnels: Personnel[];
   personnelf: Personnel;
+  isEditing: boolean;
   
   constructor(public personnel_service:PersonnelService) {
     this.personnels = [];
-    this.personnelf = {"nom":"", "prenom":[], "habilitation":Habilitation.copilote}
+    this.personnelf = <Personnel>{};
+    this.isEditing = false;
   }
   
-  selectPersonnel(nom:string) {
-    this.personnelf = this.personnels.find(p => p.nom == nom)!;
+  selectPersonnel(code:string) {
+    this.personnelf = this.personnels.find(p => p.code == code)!;
+    this.isEditing = true;
   }
   
   updatePersonnel() {
-    //this.avion_service.updateFireAvion(this.avionf.code)
+    this.personnel_service.updateFirePersonnel(this.personnelf.code, this.personnelf)
     console.log("Le personnel va etre mis a jour");
   }
   
   resetPersonnel(){
     this.personnelf = <Personnel>{};
+    this.isEditing = false;
   }
   
   ngOnInit(): void {

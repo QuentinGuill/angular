@@ -12,14 +12,20 @@
             <td> {{ v.nom }} </td>
             <td> {{ v.prenom }} </td>
             <td> {{ v.habilitation }} </td>
+            <td><button (click)="selectPersonnel(v.code)">Modifier</button></td>
         </tr>
     </table>
 </aside>
 <section>
-    <h3>Liste des avions disponibles</h3>
-    <form (submit)="updatePersonnel()" #f="ngForm">
+    <div class="alligned-h3">
+        <h3 [ngClass]="isEditing ? 'd-none' : ''">Ajouter du</h3><h3 [ngClass]="isEditing ? '' : 'd-none'">Modifier le</h3><h3> Personnel</h3>
+    </div>
+        <form (submit)="updatePersonnel()" #f="ngForm">
+        <input name="code" [disabled]="isEditing" [(ngModel)]="personnelf.code">
         <input name="nom" [(ngModel)]="personnelf.nom">
         <input name="prenom" [(ngModel)]="personnelf.prenom">
         <input name="habilitation" [(ngModel)]="personnelf.habilitation">
+        <button type="submit">Modifier</button>
+        <button (click)="resetPersonnel()">Reset</button>
     </form>
 </section>

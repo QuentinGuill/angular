@@ -29,19 +29,19 @@ export class PersonnelService {
     });
   }
 
-  async getFirePersonnel(nom:string) {
-    const docAvion = doc(this.bdd, 'personnel', nom);
-    await getDoc(docAvion);
+  async getFirePersonnel(code:string) {
+    const docPersonnel = doc(this.bdd, 'personnel', code);
+    await getDoc(docPersonnel);
   }
 
-  async delFirePersonnel(nom:string) {
-    const docAvion = doc(this.bdd, 'personnels', nom);
-    await deleteDoc(docAvion);
+  async delFirePersonnel(code:string) {
+    const docPersonnel = doc(this.bdd, 'personnel', code);
+    await deleteDoc(docPersonnel);
   }
 
-  async updateFirePersonnel(nom:string, data:Personnel) {
-    const docAvion = doc(this.bdd, 'personnels', nom);
-    await setDoc(docAvion, data, {merge:true});
+  async updateFirePersonnel(code:string, data:Personnel) {
+    const docPersonnel = doc(this.bdd, 'personnel', code);
+    await setDoc(docPersonnel, data, {merge:true});
   }
 
   getCompany() {

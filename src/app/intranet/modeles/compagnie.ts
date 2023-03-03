@@ -4,12 +4,10 @@ import { Personnel } from "./personnel";
 
 export interface Compagnie {
     code: string;
-    avion: Avion;
+    avion: string;
     date: string;
-    personnel: Personnel[];
+    personnel: string[];
     aeroportDepart: string;
     aeroportArrivee: string;
     duree: number;
 }
-
-export const vols = _test as Compagnie[];

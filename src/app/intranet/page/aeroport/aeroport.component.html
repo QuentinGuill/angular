@@ -10,13 +10,18 @@
         <tr *ngFor= "let v of aeroports">
             <td> {{ v.nom }} </td>
             <td> {{ v.nbPiste }} </td>
+            <td><button (click)="selectAeroport(v.nom)">Modifier</button></td>
         </tr>
     </table>
 </aside>
 <section>
-    <h3>Liste des aeroports disponibles</h3>
+    <div class="alligned-h3">
+        <h3 [ngClass]="isEditing ? 'd-none' : ''">Ajouter un</h3><h3 [ngClass]="isEditing ? '' : 'd-none'">Modifier l'</h3><h3> Aeroport</h3>
+    </div>
     <form (submit)="updateAeroport()" #f="ngForm">
-        <input name="nom" [(ngModel)]="aeroportf.nom">
+        <input name="nom" [disabled]="isEditing" [(ngModel)]="aeroportf.nom">
         <input name="nbPiste" [(ngModel)]="aeroportf.nbPiste">
+        <button type="submit">Modifier</button>
+        <button (click)="resetAeroport()">Reset</button>
     </form>
 </section>

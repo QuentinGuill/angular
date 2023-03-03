@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
 body {
     background-color: aliceblue;
 }
@@ -6,14 +7,93 @@ body {
 header {
     background-color: aliceblue;
     position: fixed;
-    box-shadow: 10px turquoise;
+    box-shadow: 10px DarkTurquoise;
     display:inline-block;
     height: 50px;
     width: 100%;
+}
+
+input {
+    display: block;
+    width: 600px;
+    height: 30px;
+    border-radius: 20px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+select {
+    display: block;
+    width: 600px;
+    height: 30px;
+    border-radius: 20px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+}
+
+td {
+    border: solid 1px turquoise;
+    padding: 0 3rem;
+    height: 50px;
+}
+
+td {
+    border: solid 1px turquoise;
+    padding: 0 3rem;
+    height: 100px;
 }
 
 .header-btn {
     border: solid 1px turquoise;
     width: 50%;
     align-content: center;
+}
+
+.form-box {
+    border: solid 1px LightBlue;
+    border-radius: 0 0 2rem 2rem;
+    box-shadow: 10px 5px 5px LightBlue;
+    width:fit-content;
+    padding: 3rem;
+}
+
+.adjust-box {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.tabs {
+    width: fit-content;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+}
+
+.tab-left {
+    width: 351px;
+    height: 30px;
+    border: solid 1px lightblue;
+    border-radius: 2rem 0 0 0;
+    display: inline-block;
+}
+
+.tab-right {
+    width: 351px;
+    height: 30px;
+    border: solid 1px lightblue;
+    border-radius: 0 2rem 0 0;
+    display: inline-block;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.alligned-h3 h3 {
+    display: inline-block;
+    margin-right: 5px;
 }
